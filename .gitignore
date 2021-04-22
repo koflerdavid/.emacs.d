@@ -1,0 +1,12 @@
+*~
+session.*
+/.cache/
+/*.desktop
+/.*
+/recentf
+/transient
+/workspace
+/eln-cache/
+/elpa/
+*#
+/eclipse.jdt.ls/
