@@ -10,15 +10,22 @@
   (add-to-list 'package-archives
 	       '("melpa" . "https://melpa.org/packages/") t))
 
-(use-package flycheck
-  :hook
-  (after-init . global-flycheck-mode))
+;;; General usage
 
+(use-package ace-window
+  :bind ("M-o" . ace-window)
+  :config
+  ;; To make it more convenient on the Bone keyboard layout
+  ;; These must not overlap with the ace-window commands!!
+  (setq aw-keys (nconc
+	 '(?t ?i ?e ?r ?s ?g ?f ?y ?z)
+	 '(?C ?I ?E ?O ?B ?N ?R ?S ?G ?V ?Y ?Z)
+	 (number-sequence ?1 ?9))))
 (use-package avy
   :bind ("C-e" . avy-goto-word-or-subword-1)
   :config
-  (setq avy-keys
-	(nconc
+  ;; To make it more convenient on the Bone keyboard layout
+  (setq avy-keys (nconc
 	 '(?c ?t ?i ?e ?o ?b ?n ?r ?s ?g ?f ?v ?y ?z)
 	 '(?C ?T ?I ?E ?O ?B ?N ?R ?S ?G ?F ?V ?Y ?Z)
 	 (number-sequence ?1 ?9))))
@@ -29,7 +36,11 @@
   (add-to-list 'company-backends 'company-web-html)
   (global-company-mode t))
 
-(use-package docker-compose-mode)
+(use-package desktop
+  :config
+  (setq history-length 250)
+  (add-to-list 'desktop-globals-to-save 'file-name-history)
+  (desktop-save-mode t))
 
 (use-package helm
   :bind (("M-v" . helm-M-x)
@@ -40,6 +51,22 @@
 
 (use-package helm-company
   :after (helm company))
+
+(use-package helm-xref
+  :defer t
+  :after (helm))
+
+(use-package which-key
+  :config
+  (which-key-mode))
+
+;;; Development
+
+(use-package flycheck
+  :hook
+  (after-init . global-flycheck-mode))
+
+(use-package docker-compose-mode)
 
 (use-package lsp-haskell
   :hook
@@ -77,15 +104,14 @@
   :defer t
   :after (treemacs magit))
 
+(use-package projectile
+  :bind ("s-p" . projectile-command-map)
+  :config
+  (projectile-mode))
+
 (use-package treemacs-projectile
   :defer t
   :after (treemacs projectile))
-
-(use-package desktop
-  :config
-  (setq history-length 250)
-  (add-to-list 'desktop-globals-to-save 'file-name-history)
-  (desktop-save-mode t))
 
 (progn
   (setq inhibit-startup-message t
