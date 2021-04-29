@@ -105,7 +105,7 @@
   :after (treemacs magit))
 
 (use-package projectile
-  :bind ("s-p" . projectile-command-map)
+  :bind ("M-p" . projectile-command-map)
   :config
   (projectile-mode))
 
