@@ -10,3 +10,4 @@ session.*
 /elpa/
 *#
 /eclipse.jdt.ls/
+projectile-bookmarks.eld
