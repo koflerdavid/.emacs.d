@@ -32,6 +32,7 @@
 
 (use-package company
   :bind (("C-z" . company-complete))
+  :diminish
   :config
   (add-to-list 'company-backends 'company-web-html)
   (global-company-mode t))
@@ -42,7 +43,10 @@
   (add-to-list 'desktop-globals-to-save 'file-name-history)
   (desktop-save-mode t))
 
+(use-package diminish)
+
 (use-package helm
+  :diminish helm-mode
   :bind (("M-v" . helm-M-x)
 	 ("C-s" . helm-occur)
 	 (:map ctl-x-map ("C-f" . helm-find-files)))
@@ -57,10 +61,15 @@
   :after (helm))
 
 (use-package which-key
+  :diminish which-key-mode
   :config
   (which-key-mode))
 
 ;;; Development
+
+(use-package eldoc
+  :defer
+  :diminish eldoc-mode)
 
 (use-package flycheck
   :hook
