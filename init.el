@@ -116,7 +116,7 @@
 (use-package projectile
   :bind ("M-p" . projectile-command-map)
   :config
-  (projectile-mode))
+  (projectile-mode 1))
 
 (use-package treemacs-projectile
   :defer t
