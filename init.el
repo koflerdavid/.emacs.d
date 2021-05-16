@@ -67,6 +67,18 @@
 
 ;;; Development
 
+(use-package ccls
+  :defer t
+  :hook ((c-mode c++-mode cuda-mode) . lsp)
+  :config
+  (setq ccls-executable "/usr/bin/ccls"))
+
+(use-package company-lsp
+  :defer t
+  :after (company lsp))
+
+(use-package docker-compose-mode)
+
 (use-package eldoc
   :defer
   :diminish eldoc-mode)
@@ -74,8 +86,6 @@
 (use-package flycheck
   :hook
   (after-init . global-flycheck-mode))
-
-(use-package docker-compose-mode)
 
 (use-package lsp-haskell
   :hook
@@ -99,27 +109,20 @@
   (use-package lsp-treemacs)
   (lsp-headerline-breadcrumb-mode))
 
-(use-package ccls
-  :defer t
-  :hook ((c-mode c++-mode cuda-mode) . lsp)
-  :config
-  (setq ccls-executable "/usr/bin/ccls"))
-
-(use-package company-lsp
-  :defer t
-  :after (company lsp))
-
-(use-package treemacs-magit
-  :defer t
-  :after (treemacs magit))
-
 (use-package projectile
   :bind ("M-p" . projectile-command-map)
   :config
   (projectile-mode 1))
 
-(use-package treemacs-projectile
+(use-package treemacs
+  :config (treemacs))
+
+(use-package treemacs-magit
   :defer t
+  :after (treemacs magit))
+
+(use-package treemacs-projectile
+  :defer
   :after (treemacs projectile))
 
 (use-package ibuffer
