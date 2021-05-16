@@ -131,6 +131,7 @@
   (scroll-bar-mode 0)
   ;;(fringe-mode '(0 . 0))
   (show-paren-mode t)
+  (electric-pair-mode t)
   (column-number-mode t)
   (define-key global-map (kbd "RET") 'newline-and-indent)
   (global-set-key (kbd "C-v") ctl-x-map))
