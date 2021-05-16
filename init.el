@@ -122,6 +122,9 @@
   :defer t
   :after (treemacs projectile))
 
+(use-package ibuffer
+  :bind (:map ctl-x-map ("C-b" . ibuffer)))
+
 (progn
   (setq inhibit-startup-message t
 	inhibit-startup-echo-area-message t)
