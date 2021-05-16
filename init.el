@@ -13,7 +13,7 @@
 ;;; General usage
 
 (use-package ace-window
-  :bind ("M-o" . ace-window)
+  :bind (:map ctl-x-map ("o" . ace-window))
   :config
   ;; To make it more convenient on the Bone keyboard layout
   ;; These must not overlap with the ace-window commands!!
