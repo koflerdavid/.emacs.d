@@ -53,6 +53,8 @@
   :config
   (helm-mode t))
 
+(use-package wgrep-helm)
+
 (use-package helm-company
   :after (helm company))
 
@@ -109,6 +111,11 @@
   (use-package lsp-treemacs)
   (use-package yasnippet)
   (lsp-headerline-breadcrumb-mode))
+
+(use-package lsp-pyright
+  :defer t
+  :hook
+  (python-mode . (lambda () (require 'lsp-pyright))))
 
 (use-package projectile
   :bind ("M-p" . projectile-command-map)
