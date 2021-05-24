@@ -107,6 +107,7 @@
   :config
   (use-package helm-lsp)
   (use-package lsp-treemacs)
+  (use-package yasnippet)
   (lsp-headerline-breadcrumb-mode))
 
 (use-package projectile
